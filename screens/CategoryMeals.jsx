@@ -1,11 +1,11 @@
 import React from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native'
+import { View, Text, Button, StyleSheet, Platform } from 'react-native'
 
 import { CATEGORIES } from '../data/dummy-data'
+import Colors from '../constants/colors'
 
 const CategoryMeals = ({ navigation }) => {
     const categoryId = navigation.getParam('categoryId')
-
     const selectedCategory = CATEGORIES.find(category => category.id === categoryId)
 
     return <>
@@ -16,6 +16,19 @@ const CategoryMeals = ({ navigation }) => {
             <Button title='go back' onPress={() => navigation.goBack()} />
         </View>
     </>
+}
+
+CategoryMeals.navigationOptions = (navigationData) => {
+    const categoryId = navigationData.navigation.getParam('categoryId')
+    const selectedCategory = CATEGORIES.find(category => category.id === categoryId)
+
+    return {
+        headerTitle: selectedCategory.title,
+        headerStyle: {
+            backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
+        },
+        headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor
+    }
 }
 
 const styles = StyleSheet.create({
