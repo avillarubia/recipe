@@ -1,8 +1,7 @@
 import React from 'react'
-import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity, Platform } from 'react-native'
+import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 
 import { CATEGORIES } from '../data/dummy-data'
-import Colors from '../constants/colors'
 
 const Categories = ({ navigation }) => {
     const renderGridItem = itemData => {
@@ -36,11 +35,7 @@ const Categories = ({ navigation }) => {
 }
 
 Categories.navigationOptions = {
-    headerTitle: 'Meal Categories',
-    headerStyle: {
-        backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
-    },
-    headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor
+    headerTitle: 'Categories'
 }
 
 const styles = StyleSheet.create({
