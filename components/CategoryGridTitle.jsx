@@ -9,7 +9,7 @@ const CategoryGridTitle = props => {
 
     return <>
         <View style={styles.gridItem} >
-            <TouchableComponent onPress={() => { props.onSelect }}>
+            <TouchableComponent onPress={() => props.onSelect()}>
                 <View style={{ ...styles.container, ...{ backgroundColor: props.color } }}>
                     <Text style={styles.title}>
                         {props.title}
