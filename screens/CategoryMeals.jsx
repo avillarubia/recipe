@@ -2,22 +2,22 @@ import React from 'react'
 import { View, Text, FlatList, StyleSheet } from 'react-native'
 
 import { CATEGORIES, MEALS } from '../data/dummy-data'
-import Colors from '../constants/colors'
+import MealItem from '../components/MealItem'
 
 const CategoryMeals = ({ navigation }) => {
-    const renderMealItem = itemData => {
-        return <>
-            <View>
-                <Text>
-                    {itemData.item.title}
-                </Text>
-            </View>
-        </>
-    }
-
     const categoryId = navigation.getParam('categoryId')
-
     const displayedMeals = MEALS.filter(meal => meal.categoryIds.indexOf(categoryId) >= 0)
+
+    const renderMealItem = itemData => {
+        return <MealItem
+            title={itemData.item.title}
+            image={itemData.item.imageUrl}
+            duration={itemData.item.duration}
+            complexity={itemData.item.complexity}
+            affordability={itemData.item.affordability}
+            onSelect={() => { }}
+        />
+    }
 
     return <>
         <View style={styles.screen}>
@@ -25,6 +25,7 @@ const CategoryMeals = ({ navigation }) => {
                 data={displayedMeals}
                 keyExtractor={(item, index) => item.id}
                 renderItem={renderMealItem}
+                style={{ width: '100%' }}
             />
         </View>
     </>
