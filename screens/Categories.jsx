@@ -2,12 +2,12 @@ import React from 'react'
 import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity } from 'react-native'
 
 import { CATEGORIES } from '../data/dummy-data'
-import CategoryGridTitle from '../components/CategoryGridTitle'
+import CategoryGridTile from '../components/CategoryGridTile'
 
 const Categories = ({ navigation }) => {
     const renderGridItem = itemData => {
         return <>
-            <CategoryGridTitle
+            <CategoryGridTile
                 title={itemData.item.title}
                 color={itemData.item.color}
                 onSelect={() => {
