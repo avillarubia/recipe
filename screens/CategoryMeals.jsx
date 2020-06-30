@@ -15,7 +15,14 @@ const CategoryMeals = ({ navigation }) => {
             duration={itemData.item.duration}
             complexity={itemData.item.complexity}
             affordability={itemData.item.affordability}
-            onSelect={() => { }}
+            onSelect={() => {
+                navigation.navigate({
+                    routeName: 'MealDetails',
+                    params: {
+                        mealId: itemData.item.id
+                    }
+                })
+            }}
         />
     }
 
