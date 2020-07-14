@@ -1,4 +1,6 @@
 import React from 'react'
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+import CustomHeaderButton from '../components/CustomHeaderButton'
 import MealList from './../components/MealList'
 import { MEALS } from '../data/dummy-data'
 
@@ -10,8 +12,19 @@ const Favorites = ({ navigation }) => {
     </>
 }
 
-Favorites.navigationOptions = {
-    headerTitle: 'Your Favorites'
+Favorites.navigationOptions = navData => {
+    return {
+        headerTitle: 'Your Favorites',
+        headerLeft: <>
+            <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+                <Item
+                    title='Menu'
+                    iconName='ios-menu'
+                    onPress={() => navData.navigation.toggleDrawer()}
+                />
+            </HeaderButtons>
+        </>
+    }
 }
 
 export default Favorites
